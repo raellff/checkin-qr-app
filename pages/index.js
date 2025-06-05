@@ -25,7 +25,7 @@ export default function Scanner() {
           scanner.render();
         }
       },
-      (error) => {
+      () => {
         // pode ignorar erros de leitura momentânea
       }
     );
