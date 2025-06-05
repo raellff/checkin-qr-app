@@ -3,8 +3,13 @@ import Airtable from "airtable";
 const base = new Airtable({ apiKey: process.env.AIRTABLE_API_KEY }).base("appWZS2nyZQ9vuQM7");
 
 export default async function handler(req, res) {
+  console.log("Requisição lookup, query:", req.query);
+
   const { code } = req.query;
-  if (!code) return res.status(400).json({ error: "Missing code" });
+  if (!code) {
+    console.log("Requisição sem código");
+    return res.status(400).json({ error: "Missing code" });
+  }
 
   const records = await base("senderistas")
     .select({
